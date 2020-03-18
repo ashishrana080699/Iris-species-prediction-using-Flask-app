@@ -18,7 +18,7 @@ def index():
 
 @app.route('/preview')
 def preview():
-    df = pd.read_csv("data/iris.csv")
+    df = pd.read_csv("iris.csv")
     return render_template("preview.html",df_view = df)
 
 @app.route('/',methods=["POST"])
@@ -41,13 +41,13 @@ def analyze():
 
 		# Reloading the Model
 		if model_choice == 'logitmodel':
-		    logit_model = joblib.load('data/logit_model_iris.pkl')
+		    logit_model = joblib.load('logit_model_iris.pkl')
 		    result_prediction = logit_model.predict(ex1)
 		elif model_choice == 'knnmodel':
-			knn_model = joblib.load('data/knn_model_iris.pkl')
+			knn_model = joblib.load('knn_model_iris.pkl')
 			result_prediction = knn_model.predict(ex1)
 		elif model_choice == 'svmmodel':
-			knn_model = joblib.load('data/svm_model_iris.pkl')
+			knn_model = joblib.load('svm_model_iris.pkl')
 			result_prediction = knn_model.predict(ex1)
 
 	return render_template('index.html', petal_width=petal_width,
